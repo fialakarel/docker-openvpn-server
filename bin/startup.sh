@@ -2,14 +2,14 @@
 
 set -euo pipefail
 
-# go to /vpn dir
+# go to /opt/openvpn dir
 cd /opt/openvpn
 
 if [ ! -f "easyrsa" ]; then
   # file easyrsa do not exist -> need to configure vpn
 
   # copy all easy-rsa files
-  cp -r /usr/share/easy-rsa/* /vpn/.
+  cp -r /usr/share/easy-rsa/* /opt/openvpn/.
 
   # create pki
   ./easyrsa init-pki
