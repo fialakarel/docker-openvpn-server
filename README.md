@@ -24,7 +24,9 @@ docker run \
 
 ### Daemonize
 
-Run the already configured OpenVPN server in the backgroud.
+* Run the already configured OpenVPN server in the backgroud.
+* Feel free to omit `--net host` and do `--publish 1194:1194/udp` if you do not need to modify the host networking.
+For example, you need to make secure connection between the clients only.
 
 ```
 docker run \
@@ -67,6 +69,13 @@ docker exec openvpn-server update-crl
 ```
 docker exec openvpn-server revoke-certificate <user>
 ```
+
+### Client custom configuration
+
+* Uncomment this line `;client-config-dir "/opt/openvpn/client-config"` in your `server.ovpn`.
+* Create a `client-config` directory on the same level as `server.ovpn` file is.
+* There you can create file with a custom configuration per each client.
+For example, `echo "ifconfig-push 192.168.111.4 255.255.255.0" >client-config/myntb` to set static IP to `myntb`. Please, make sure that the `myntb` is the existing client (certificate) name.
 
 ## Iptables and routes
 
