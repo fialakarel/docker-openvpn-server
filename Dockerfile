@@ -3,7 +3,9 @@ FROM alpine:latest
 MAINTAINER Karel Fiala <fiala.karel@gmail.com>
 
 ENV PATH="/opt/bin:${PATH}" \
-    EASYRSA_CRL_DAYS=3650
+    EASYRSA_CRL_DAYS=3650 \
+    EASYRSA_CA_EXPIRE=3650 \
+    EASYRSA_CERT_EXPIRE=3650
 
 COPY bin /opt/bin
 
